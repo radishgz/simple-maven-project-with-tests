@@ -3,9 +3,13 @@ import java.util.*;
 
 public class test {
 
-    public static void main(String...args){
-    int i=10;
-    int j=20;
-    }
-    }
-    
+	public test() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public static void main(String[] args) {
+ int i=1;
+  int j=10;
+	}
+
+}
