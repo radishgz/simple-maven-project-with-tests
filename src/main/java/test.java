@@ -11,7 +11,7 @@ public class test {
  int i=1;
   int j=i+2;
 		System.out.print(j);
-		//i=i;
+		i=i;
 		
 	}
 
