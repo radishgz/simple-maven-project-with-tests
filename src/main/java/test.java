@@ -10,7 +10,7 @@ public class test {
 	public static void main(String[] args) {
  int i=1;
   int j=10;
-		i=i;
+		//i=i;
 		
 	}
 
