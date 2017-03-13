@@ -9,7 +9,8 @@ public class test {
 
 	public static void main(String[] args) {
  int i=1;
-  int j=10;
+  int j=i+2;
+		System.out.print(j);
 		//i=i;
 		
 	}
