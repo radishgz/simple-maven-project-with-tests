@@ -1,5 +1,6 @@
 #!groovy
-# create by xiehq
+
+// create by xiehq @2017-03
 def usage()={
    echo " the script will checkout source and execute \n
    1. maven's clean and package goals \n
