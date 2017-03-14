@@ -1,4 +1,22 @@
 #!groovy
+# create by xiehq
+def usage()={
+   echo " the script will checkout source and execute \n
+   1. maven's clean and package goals \n
+   2. Findbus scan with include filter \n
+   3. send content to sonar "
+   echo "Environment variables"
+   echo " GITURL(option), git url of source code ,GITURL and SVNURL must and only one should be set"
+   echo " MVNNAME(required), jenkins's maven install name "
+   echo " SVNURL(option), svn url. the url not used when GITURL be set"
+   echo " CREDENTIALS(option), the crendential will used to checkout sourcecode , it be defind in Jenkins and should have username and password"
+   echo " SONARHOSTURL(), Sonar host url"
+   echo " SONARPASSOWRD() Sonar passowrd"
+   echo " SONARLOGIN, Sonar login name"
+   echo " FINDBUGSFILTER, findbugs include filter xml file id ,the file is a Jenkins config file "
+ 
+}
+
 node {
    def gitUrl
    def svnUrl
@@ -33,6 +51,7 @@ node {
        echo MVNNAME
    }catch (exc) {
        error "must define MVNNAEM ,the MAVEN configure name is Jenkins."
+       usage
    }
   
  
@@ -62,8 +81,9 @@ node {
 
             // svn svnUrl
         }else{
+            usage
             error 'Please input svnUrl or gitUrl'
-
+            
         }
        //}
     }else{
@@ -77,6 +97,7 @@ node {
 
              svn svnUrl
         }else{
+            usage
             error 'Please input svnUrl or gitUrl'
 
         }
