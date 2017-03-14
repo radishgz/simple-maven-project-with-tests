@@ -1,0 +1,7 @@
+<FindBugsFilter>
+<Match>
+    <Or>   <Bug pattern="SA_LOCAL_SELF_ASSIGNMENT" />
+     <Bug pattern="SA_LOCAL_DOUBLE_ASSIGNMENT" />
+    </Or>
+</Match>
+</FindBugsFilter>
