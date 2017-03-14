@@ -54,8 +54,9 @@ node {
     try {
        echo MVNNAME
    }catch (exc) {
-       error "must define MVNNAEM ,the MAVEN configure name is Jenkins."
        usage
+       error "must define MVNNAEM ,the MAVEN configure name is Jenkins."
+       
    }
 
     if (creid != null && creid!=""){
