@@ -1,7 +1,7 @@
 #!groovy
 
 // create by xiehq @2017-03
-def usage()={
+def usage={
    echo " the script will checkout source and execute \n
    1. maven's clean and package goals \n
    2. Findbus scan with include filter \n
