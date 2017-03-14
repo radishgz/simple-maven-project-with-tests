@@ -2,10 +2,10 @@
 
 // create by xiehq @2017-03
 def usage={
-   echo " the script will checkout source and execute \n
-   1. maven's clean and package goals \n
-   2. Findbus scan with include filter \n
-   3. send content to sonar "
+   echo " the script will checkout source and execute "
+   echo " 1. maven's clean and package goals "
+   echo " 2. Findbus scan with include filter "
+   echo " 3. send content to sonar "
    echo "Environment variables"
    echo " GITURL(option), git url of source code ,GITURL and SVNURL must and only one should be set"
    echo " MVNNAME(required), jenkins's maven install name "
