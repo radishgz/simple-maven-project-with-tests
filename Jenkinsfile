@@ -23,22 +23,26 @@ node {
    def svnUrl
    def creid
    def mvnHome
-   stage("get env") {
-   echo  '1'
+    
+  
+ 
+   
+    
+   
+   stage('Preparation') { // for display purposes
+       echo  '1'
    try{
    gitUrl="${GITURL}"
    }catch (exc) {
        gitUrl=null
    }
-    echo  '2'
-   try{
+    try{
     svnUrl="${SVNURL}"}
    catch (exc) {
        svnUrl=null
    }
    
-    echo  '3'
-
+ 
    try{
      creid="${CREDENTIALS}"
      //  echo  'CREDENTIALS'
@@ -47,20 +51,12 @@ node {
        echo "Caught: ${exc}"
         creid=null
    }
-      echo  '4'
-   try {
+    try {
        echo MVNNAME
    }catch (exc) {
        error "must define MVNNAEM ,the MAVEN configure name is Jenkins."
        usage
    }
-  
- 
-   
-   }
-   
-   stage('Preparation') { // for display purposes
-       
 
     if (creid != null && creid!=""){
  
