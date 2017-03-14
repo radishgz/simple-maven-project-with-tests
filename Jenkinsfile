@@ -36,32 +36,21 @@ node {
    }
   
  
-  // echo 'gitUrl' gitUrl 
-   //echo 'creid' creid 
-   //echo 'gitUrl' gitUrl 
-   //echo ''
-  
-   echo  '-------'
+   
    }
    
    stage('Preparation') { // for display purposes
-      // Get some code from a GitHub repository
-      //git 'http://10.0.2.50:180/xiehq/moskito'
-      //git 'https://github.com/radishgz/simple-maven-project-with-tests.git'
-      
-     // withCredentials([usernamePassword(credentialsId: '8b24228d-e871-4178-82a4-be8b14ca34cf', passwordVariable: 'xhq4y323', usernameVariable: 'xiehq')]) {
-    // some block
-       echo  '-------'
+       
 
-    if (creid != null){
+    if (creid != null && creid!=""){
  
       // withCredentials([usernameColonPassword(credentialsId: creid, variable: '')]) {
-         if (gitUrl != null){
+         if (gitUrl != null && gitUrl!="" ){
             echo  'using credential to git'+gitUrl
 
             git credentialsId:creid, url:gitUrl
         }
-         else if(svnUrl != null)   {
+         else if(svnUrl != null && svnUrl!="" )   {
             echo  'using credential to svn'+svnUrl
 
 
@@ -78,12 +67,12 @@ node {
         }
        //}
     }else{
-        if (gitUrl != null){
+        if (gitUrl != null && gitUrl!=""){
                         echo  'no credential git'+gitUrl
 
             git gitUrl
         }
-         else if(svnUrl != null)   {
+         else if(svnUrl != null && svnUrl!="")   {
                          echo  'no credential svn'+svnUrl
 
              svn svnUrl
