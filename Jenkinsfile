@@ -112,8 +112,8 @@ node {
  
    
   stage('Static Check') {
-     sh "curl -L -o ./FingbusFilter.xml '${FINDBUGSFILTER}'"
- configFileProvider([configFile(fileId: ''657387f5-3698-4f0c-a34c-6773568fd612', targetLocation: './findbugsfilter.xml')]) {
+    // sh "curl -L -o ./FingbusFilter.xml '${FINDBUGSFILTER}'"
+ configFileProvider([configFile(fileId: FINDBUGSFILTER, targetLocation: './findbugsfilter.xml')]) {
         }
            sh "'${mvnHome}/bin/mvn' -X org.codehaus.mojo:findbugs-maven-plugin:3.0.4:check -Dfindbugs.includeFilterFile=../findbugsfilter.xml -Dfindbugs.xmlOutput=true "
     
