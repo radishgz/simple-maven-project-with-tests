@@ -12,7 +12,7 @@ public class test {
   int j=i+2;
 		System.out.print(j);
 		i=i;
-		j=i;
+		j=j=i;
 		
 	}
 
