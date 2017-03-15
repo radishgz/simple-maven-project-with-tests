@@ -22,8 +22,8 @@ node {
     def gitUrl
     def svnUrl
     def creid
-    def mvnHome 
-    
+    def mvnHome
+
     stage('Preparation') { // for display purposes
         echo '1'
         try {
@@ -66,11 +66,11 @@ node {
                 echo 'using credential to svn' + svnUrl
 
 
-                checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '',   \
-              excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '',  \
-             locations: [[credentialsId: creid, depthOption: 'infinity', ignoreExternalsOption: true, local: '.',  \
-             remote: svnUrl]],  \
-              workspaceUpdater: [$class: 'UpdateUpdater']])
+                checkout([$class: 'SubversionSCM', additionalCredentials: [], excludedCommitMessages: '', excludedRegions: '',    \
+               excludedRevprop: '', excludedUsers: '', filterChangelog: false, ignoreDirPropChanges: false, includedRegions: '',   \
+              locations: [[credentialsId: creid, depthOption: 'infinity', ignoreExternalsOption: true, local: '.',   \
+              remote: svnUrl]],   \
+               workspaceUpdater: [$class: 'UpdateUpdater']])
 
                 // svn svnUrl
             } else {
@@ -106,7 +106,7 @@ node {
     stage('Build') {
         // Run the maven build
         //if (isUnix()) {
-            sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+        sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
         //} else {
         //    bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
         //}
@@ -117,20 +117,26 @@ node {
         // sh "curl -L -o ./FingbusFilter.xml '${FINDBUGSFILTER}'"
         configFileProvider([configFile(fileId: FINDBUGSFILTER, targetLocation: './findbugsfilter.xml')]) {
         }
-        sh "'${mvnHome}/bin/mvn' -X org.codehaus.mojo:findbugs-maven-plugin:3.0.4:check -Dfindbugs.includeFilterFile=../findbugsfilter.xml -Dfindbugs.xmlOutput=true "
+
+        try {
+            sh "'${mvnHome}/bin/mvn' -X org.codehaus.mojo:findbugs-maven-plugin:3.0.4:check -Dfindbugs.includeFilterFile=../findbugsfilter.xml -Dfindbugs.xmlOutput=true "
+        }
+        finally {
+            stage("Archive") {
+                //sh 'rm temp.zip'
+                //build.number='${BUILD_NUMBER}'
+                //pom = readMavenPom file: 'pom.xml'
+                //def filename
+                filename = env.BUILD_TAG + ".zip"
+                echo filename
+                //echo env.BUILD_TAG
+
+                zip archive: true, dir: 'target', glob: '', zipFile: filename
+            }
+        }
 
     }
-    stage("Archive") {
-        //sh 'rm temp.zip'
-        //build.number='${BUILD_NUMBER}'
-        //pom = readMavenPom file: 'pom.xml'
-        //def filename
-        filename = env.BUILD_TAG + ".zip"
-        echo filename
-        //echo env.BUILD_TAG
 
-        zip archive: true, dir: 'target', glob: '', zipFile: filename
-    }
 
     stage("Sonar") {
         def URL
