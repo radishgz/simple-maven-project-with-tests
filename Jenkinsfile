@@ -152,7 +152,7 @@ node {
 //    sh '${mvnHome}/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
 
             //export sonar.host.url= '10.211.55.44:9000';
-            sh "'${mvnHome}/bin/mvn' -X org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar -Dsonar.host.url='${URL}' -Dsonar.login='${LOGIN}' -Dsonar.password='${PASSWORD}'"
+            sh "'${mvnHome}/bin/mvn' -X org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.host.url='${URL}' -Dsonar.login='${LOGIN}' -Dsonar.password='${PASSWORD}'"
 
         }
     }
