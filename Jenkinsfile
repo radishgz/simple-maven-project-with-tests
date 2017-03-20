@@ -138,7 +138,11 @@ node {
 
     }
 
+    stage ("OSWAP"){
+         //   mvn clean install org.owasp:dependency-check-maven:check -Ddependency-check-format=XML
+         sh "'${mvnHome}/bin/mvn'  org.owasp:dependency-check-maven:1.4.5:check -Ddependency-check-format=XML"
 
+    }
     stage("Sonar") {
         def URL
         URL = "${SONARHOSTURL}"
@@ -147,14 +151,13 @@ node {
         def LOGIN
         LOGIN = "${SONARLOGIN}"
 
-        withSonarQubeEnv('mySonar') {
-// requires SonarQube Scanner for Maven 3.2+
+ // requires SonarQube Scanner for Maven 3.2+
 //    sh '${mvnHome}/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
 
             //export sonar.host.url= '10.211.55.44:9000';
             sh "'${mvnHome}/bin/mvn'  org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.host.url='${URL}' -Dsonar.login='${LOGIN}' -Dsonar.password='${PASSWORD}'"
 
-        }
+         
     }
 
 }
