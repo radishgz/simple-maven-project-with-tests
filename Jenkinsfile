@@ -119,7 +119,7 @@ node {
 
         try {
              configFileProvider([configFile(fileId: FINDBUGSFILTER, targetLocation: './findbugsfilter.xml')]) {
-                    sh "'${mvnHome}/bin/mvn'  org.codehaus.mojo:findbugs-maven-plugin:3.0.4:findbugs -Dfindbugs.includeFilterFile=./findbugsfilter.xml -Dfindbugs.xmlOutput=true -Dfindbugs.pluginList=com.h3xstream.findsecbugs:findsecbugs-plugin:1.5.0"
+                    sh "'${mvnHome}/bin/mvn'  org.codehaus.mojo:findbugs-maven-plugin:3.0.4:findbugs -Dfindbugs.includeFilterFile=./findbugsfilter.xml -Dfindbugs.xmlOutput=true -Dfindbugs.pluginList=com.h3xstream.findsecbugs:findsecbugs-plugin:1.5.0.jar"
             }
         }
         finally {
