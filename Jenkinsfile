@@ -141,6 +141,15 @@ node {
     }
 
     
+    stage("build Image"){
+    agent {
+    docker {
+        label '10.0.2.50'
+        sh "docker pull tomcat:"
+      }
+    }
+    }
+    
     stage("Sonar") {
         def URL
         URL = "${SONARHOSTURL}"
