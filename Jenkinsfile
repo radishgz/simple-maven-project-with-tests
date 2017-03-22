@@ -133,8 +133,12 @@ node {
                 filename = env.BUILD_TAG + ".zip"
                 echo filename
                 //echo env.BUILD_TAG
-
-                zip archive: true, dir: 'target', glob: '', zipFile: filename
+                post {
+                 always {
+                      Tagrt '.'
+                }
+                 }
+                //zip archive: true, dir: 'target', glob: '', zipFile: filename
             }
         }
 
