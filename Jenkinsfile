@@ -134,9 +134,9 @@ node {
                 echo filename
                 //echo env.BUILD_TAG
                 post {
-                 always {
-                      Tagrt '.'
-                }
+                     always {
+                        Output './*'
+                         }
                  }
                 //zip archive: true, dir: 'target', glob: '', zipFile: filename
             }
