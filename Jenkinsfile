@@ -135,7 +135,7 @@ node {
                 //echo env.BUILD_TAG
                 post {
                      always {
-                        Output './*'
+                        archive 'target/*.war'
                          }
                  }
                 //zip archive: true, dir: 'target', glob: '', zipFile: filename
