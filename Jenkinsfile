@@ -119,8 +119,9 @@ node {
 
         try {
              configFileProvider([configFile(fileId: FINDBUGSFILTER, targetLocation: './findbugsfilter.xml')]) {
-                     // sh "'${mvnHome}/bin/mvn'  org.owasp:dependency-check-maven:1.4.5:check -Ddependency-check-format=XML -DreportOutputDirectory=./target"
-                      sh "'${mvnHome}/bin/mvn'  org.codehaus.mojo:findbugs-maven-plugin:3.0.4:findbugs -Dfindbugs.includeFilterFile=./findbugsfilter.xml -Dfindbugs.xmlOutput=true -Dfindbugs.pluginList=/root/findsecbugs-plugin-1.5.0.jar"
+                      //sh "'${mvnHome}/bin/mvn'  org.owasp:dependency-check-maven:1.4.5:check -Ddependency-check-format=XML -DreportOutputDirectory=./target"
+                     // sh "'${mvnHome}/bin/mvn'  org.codehaus.mojo:findbugs-maven-plugin:3.0.4:findbugs -Dfindbugs.includeFilterFile=./findbugsfilter.xml -Dfindbugs.xmlOutput=true -Dfindbugs.pluginList=/root/findsecbugs-plugin-1.5.0.jar"
+            sh "'${mvnHome}/bin/mvn'  org.codehaus.mojo:findbugs-maven-plugin:3.0.4:findbugs -Dfindbugs.includeFilterFile=./findbugsfilter.xml -Dfindbugs.xmlOutput=true "
             
              }
         }
