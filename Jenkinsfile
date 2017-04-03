@@ -155,7 +155,7 @@ node {
                   //      archive 'target/*.war'
                  //        }
                  //}
-                zip archive: true, dir: 'target/Dockerfile', glob: '', zipFile: filename
+                zip archive: true, dir: './Dockerfile', glob: '', zipFile: filename
     }
     
     stage("Sonar") {
