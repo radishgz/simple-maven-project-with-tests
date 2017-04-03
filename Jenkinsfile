@@ -136,10 +136,10 @@ node {
                 //echo env.BUILD_TAG
                // post {
                     // always {
-                        archive 'target/*.war'
+                  //      archive 'target/*.war'
                  //        }
                  //}
-                //zip archive: true, dir: 'target', glob: '', zipFile: filename
+                zip archive: true, dir: 'target', glob: '', zipFile: filename
             }
         }
 
@@ -147,12 +147,15 @@ node {
 
     
     stage("build Image"){
-    agent {
-    docker {
-        label '10.0.2.50'
-        sh "docker pull tomcat:"
-      }
-    }
+        filename = "docker"+env.BUILD_TAG + ".zip"
+                echo filename
+                //echo env.BUILD_TAG
+               // post {
+                    // always {
+                  //      archive 'target/*.war'
+                 //        }
+                 //}
+                zip archive: true, dir: 'target/Dockerfile', glob: '', zipFile: filename
     }
     
     stage("Sonar") {
