@@ -155,7 +155,8 @@ node {
                   //      archive 'target/*.war'
                  //        }
                  //}
-                zip archive: true, dir: './Dockerfile', glob: '', zipFile: filename
+            sh "mkdir ./target/docker"+env.BUILD_TAG
+                zip archive: true, dir: './target/docker'+env.BUILD_TAG, glob: '', zipFile: filename
     }
     
     stage("Sonar") {
