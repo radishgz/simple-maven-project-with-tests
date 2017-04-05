@@ -159,22 +159,20 @@ node {
                 zip archive: true, dir: './target/docker'+env.BUILD_TAG, glob: '', zipFile: filename
     }
     
-    stage("Sonar") {
-        def URL
-        URL = "${SONARHOSTURL}"
-        def PASSWORD
-        PASSWORD = "${SONARPASSOWRD}"
-        def LOGIN
-        LOGIN = "${SONARLOGIN}"
-
- // requires SonarQube Scanner for Maven 3.2+
-//    sh '${mvnHome}/bin/mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.2:sonar'
-
-            //export sonar.host.url= '10.211.55.44:9000';
-            sh "'${mvnHome}/bin/mvn'  org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.host.url='${URL}' -Dsonar.login='${LOGIN}' -Dsonar.password='${PASSWORD}'"
-
-         
-    }
+ //   stage("Sonar") {
+//        def URL
+//        URL = "${SONARHOSTURL}"
+//        def PASSWORD
+//        PASSWORD = "${SONARPASSOWRD}"
+//        def LOGIN
+//        LOGIN = "${SONARLOGIN}"
+//
+// 
+//            //export sonar.host.url= '10.211.55.44:9000';
+//            sh "'${mvnHome}/bin/mvn'  org.sonarsource.scanner.maven:sonar-maven-plugin:3.0.2:sonar -Dsonar.host.url='${URL}' -Dsonar.login='${LOGIN}' -Dsonar.password='${PASSWORD}'"
+//
+//         
+//    }
 
 }
   
